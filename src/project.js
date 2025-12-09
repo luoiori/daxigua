@@ -1080,7 +1080,7 @@ window.__require = function e(t, n, o) {
       gameScore: 0,
       standScore: 30,
       GAME_OVER_BOOL: !0,
-      publicGameBool: !1,
+      publicGameBool: !0, // 纯单机模式：设为true，允许多次游戏
       ranLinkData: null,
       recGameData: null,
       InfoData: null,
@@ -1874,6 +1874,12 @@ window.__require = function e(t, n, o) {
       },
       onLoad: function () {
         cc.director.getCollisionManager().enabled = !0, cc.director.getPhysicsManager().enabled = !0, this.gameOveEndBool = !1, this.gameOverNum = 0, this.gameWidth = cc.winSize.width, this.gameHeight = cc.winSize.height, o.playNum, o.playNum++, c.loadingLayer("panel/LinkIconSpr"), o.mainGameJs = this, o.publicGameBool || this.play()
+
+        // 【测试模式】直接显示游戏结束界面，快速验证翻译
+        var self = this;
+        setTimeout(function() {
+          self.gameEnd1();
+        }, 500);
       },
       play: function () {
         console.log(1);
