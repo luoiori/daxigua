@@ -6,7 +6,7 @@
 if (selectModal) {
   let extraScoreStr = '';
   while (isNaN(parseInt(extraScoreStr))) {
-    extraScoreStr = prompt('أدخل رقم إضافة النقاط', '1').trim();
+    extraScoreStr = prompt('请输入分数加成数字', '1').trim();
   }
   extraScore = parseInt(extraScoreStr)
 }
@@ -1012,20 +1012,28 @@ window.__require = function e(t, n, o) {
           null != n.Instance && n.Instance.destroy(), n.Instance = this, this.clickMask.setContentSize(cc.winSize.width, cc.winSize.height), this.bgMask.setContentSize(cc.winSize.width, cc.winSize.height), this.failedUiBox.y = cc.winSize.height / 2 + this.failedUiBox.height / 2
         }, t.prototype.start = function () {
           var e = i.default.returnCurrentLanType();
-          1 != e && (this.bencichengji.getComponent(cc.Sprite).spriteFrame = this.bencichengjiarr[e - 1], this.gengduoyouxi.getComponent(cc.Sprite).spriteFrame = this.gengduoyouxiarr[e - 1]), this.continueTip.getComponent(cc.Label).string = 1 == e ? "\u70b9\u51fb\u7ee7\u7eed" : 2 == e ? "\u9ede\u64ca\u7e7c\u7e8c" : 4 == e ? "\ud074\ub9ad \ud558\uc5ec \uacc4\uc18d" : 5 == e ? "اضغط للمتابعة" : "Click Continue", this.reStartBtn.runAction(cc.repeatForever(cc.sequence(cc.scaleTo(.5, 1.1), cc.scaleTo(.55, 1), cc.delayTime(.5)))), cc.tween(this.moreGameBtn).to(.5, {
+          1 != e && (this.bencichengji.getComponent(cc.Sprite).spriteFrame = this.bencichengjiarr[e - 1], this.gengduoyouxi.getComponent(cc.Sprite).spriteFrame = this.gengduoyouxiarr[e - 1]), this.continueTip.getComponent(cc.Label).string = 1 == e ? "\u70b9\u51fb\u7ee7\u7eed" : 2 == e ? "\u9ede\u64ca\u7e7c\u7e8c" : 4 == e ? "\ud074\ub9ad \ud558\uc5ec \uacc4\uc18d" : "Click Continue", this.reStartBtn.runAction(cc.repeatForever(cc.sequence(cc.scaleTo(.5, 1.1), cc.scaleTo(.55, 1), cc.delayTime(.5)))), cc.tween(this.moreGameBtn).to(.5, {
             scale: 1.1
           }).to(.5, {
             scale: 1
-          }).union().repeatForever().start(), // cc.tween(this.adsButton2).to(1, {
+          }).union().repeatForever().start(), cc.tween(this.adsButton2).to(1, {
             scale: .8
           }).to(1, {
             scale: .9
-          }).union().repeatForever().start()  // 已禁用广告按钮动画
+          }).union().repeatForever().start()
         }, t.prototype.update = function (e) {
-        }, t.prototype.adsButtonFunc2 = function () { /* 已禁用广告功能 */ }, t.prototype.bannerButtonFunc = function () { /* 已禁用广告功能 */ }, t.prototype.ShowFailedUi = function (e, t) {
+        }, t.prototype.adsButtonFunc2 = function () {
+          if (adLink) {
+            window.location.href = adLink
+          }
+        }, t.prototype.bannerButtonFunc = function () {
+          if (adLink) {
+            window.location.href = adLink
+          }
+        }, t.prototype.ShowFailedUi = function (e, t) {
           var n = this;
           this.scheduleOnce(function () {
-            r.default.Instance.HideScorePanel(), n.levelTxt.string = r.default.Instance.level.toString(), n.scoreLabel.string = s.default.score.toString(), n.highScoreLabel.string = t, n.resultTxt.node.active = false  // 隐藏击败玩家文本, n.overTxt.string = "أكملت المستوى الحالي " + Math.floor(r.default.Instance.nowYQ / r.default.Instance.passlevelYQ * 100) + "%", n.canClick = !1, n.levelTxt.string = e, n.bgMask.runAction(cc.fadeTo(.36, 150)), n.scheduleOnce(function () {
+            r.default.Instance.HideScorePanel(), n.levelTxt.string = r.default.Instance.level.toString(), n.scoreLabel.string = s.default.score.toString(), n.highScoreLabel.string = t, n.resultTxt.string = n.GetContentByScore(e), n.overTxt.string = "\u5f53\u524d\u5173\u5361\u5df2\u5b8c\u6210" + Math.floor(r.default.Instance.nowYQ / r.default.Instance.passlevelYQ * 100) + "%", n.canClick = !1, n.levelTxt.string = e, n.bgMask.runAction(cc.fadeTo(.36, 150)), n.scheduleOnce(function () {
               i.default.CenteredUi(10, this.di, this.levelTxt.node, this.guan), this.failedUiBox.y = cc.winSize.height / 2 + this.failedUiBox.height / 2, this.failedUiBox.runAction(cc.sequence(cc.moveTo(.36, this.failedBoxPos).easing(cc.easeBackOut()), cc.callFunc(function () {
                 this.clickMask.on(cc.Node.EventType.TOUCH_START, this.OnClickCloseMask, this), this.moreGameBtn.on(cc.Node.EventType.TOUCH_START, this.OnClickMoreGame, this), this.continueTip.opacity = 0, this.continueTip.runAction(cc.repeatForever(cc.sequence(cc.fadeIn(.5), cc.delayTime(.5), cc.fadeOut(.5)))), this.canClick = !0
               }, this)))
@@ -1039,13 +1047,13 @@ window.__require = function e(t, n, o) {
           this.canClick && 0 == cc.find("Canvas/uiEffectPanel").childrenCount && a.default.Instance.RestartGame()
         }, t.prototype.OnClickMoreGame = function () {
           this.canClick && (this.moreGameBtn.off(cc.Node.EventType.TOUCH_START, this.OnClickMoreGame, this), this.canClick = !1, this.moreGameBtn.runAction(cc.sequence(cc.scaleTo(.1, 1.1), cc.scaleTo(.1, 1))), this.scheduleOnce(function () {
-            a.default.Instance.RestartGame()  // 重新开始游戏
+            window.location.href = "http://m.wesane.com/"
           }, .15))
         }, t.prototype.GetContentByScore = function (e) {
           var t = Math.ceil(e / 1500 * 94);
           t > 94 && (t = 94);
           var n = 5 + t;
-          return "هزمت " + n + "% من اللاعبين العالميين!", ["هزمت " + n + "% من اللاعبين العالميين!", "\u64ca\u6557\u4e86\u5168\u7403" + n + "% من اللاعبين العالميين!", "Beat " + n + " % of global players", "\uc804 \uc138\uacc4" + n + "% \uc758 \uc720 \uc800 \ub97c \uc774 \uacbc \uc2b5 \ub2c8 \ub2e4"][i.default.returnCurrentLanType() - 1]
+          return "\u51fb\u8d25\u4e86\u5168\u7403" + n + "%\u7684\u73a9\u5bb6\uff01", ["\u51fb\u8d25\u4e86\u5168\u7403" + n + "%\u7684\u73a9\u5bb6\uff01", "\u64ca\u6557\u4e86\u5168\u7403" + n + "%\u7684\u73a9\u5bb6\uff01", "Beat " + n + " % of global players", "\uc804 \uc138\uacc4" + n + "% \uc758 \uc720 \uc800 \ub97c \uc774 \uacbc \uc2b5 \ub2c8 \ub2e4"][i.default.returnCurrentLanType() - 1]
         }, t.Instance = null, c([d(cc.Node)], t.prototype, "clickMask", void 0), c([d(cc.Node)], t.prototype, "failedUiBox", void 0), c([d(cc.Node)], t.prototype, "di", void 0), c([d(cc.Label)], t.prototype, "levelTxt", void 0), c([d(cc.Node)], t.prototype, "guan", void 0), c([d(cc.Node)], t.prototype, "continueTip", void 0), c([d(cc.Label)], t.prototype, "scoreLabel", void 0), c([d(cc.Node)], t.prototype, "highScoreNode", void 0), c([d(cc.Node)], t.prototype, "highScore", void 0), c([d(cc.Label)], t.prototype, "highScoreLabel", void 0), c([d(cc.Label)], t.prototype, "resultTxt", void 0), c([d(cc.Label)], t.prototype, "overTxt", void 0), c([d(cc.Node)], t.prototype, "moreGameBtn", void 0), c([d(cc.Node)], t.prototype, "reStartBtn", void 0), c([d(cc.Vec2)], t.prototype, "failedBoxPos", void 0), c([d], t.prototype, "standardScore", void 0), c([d(cc.Node)], t.prototype, "bgMask", void 0), c([d(cc.Node)], t.prototype, "bencichengji", void 0), c([d(cc.SpriteFrame)], t.prototype, "bencichengjiarr", void 0), c([d(cc.Node)], t.prototype, "gengduoyouxi", void 0), c([d(cc.SpriteFrame)], t.prototype, "gengduoyouxiarr", void 0), c([d(cc.Node)], t.prototype, "adsButton2", void 0), c([d(cc.Node)], t.prototype, "bannerButton", void 0), t = n = c([u], t)
       }(cc.Component);
     n.default = p, cc._RF.pop()
@@ -1202,7 +1210,6 @@ window.__require = function e(t, n, o) {
             if (fruitSlowDown) {
               n.getComponent(cc.RigidBody).linearDamping = fruitSlowDown;
             }
-            n.getComponent(cc.RigidBody).active = false;
             n.getComponent(cc.PhysicsCircleCollider).radius = 0;
             // 让说过更 Q 弹
             if (fruitQTan) {
@@ -1460,7 +1467,7 @@ window.__require = function e(t, n, o) {
     cc._RF.push(t, "197e1hfNnxIcJx73V3VhUxY", "HttpManagerJs");
     var a = e("GameConfig"),
       i = (c(o = {
-        URL: ""  // 已移除外部服务接口,
+        URL: "http://www.wesane.com/h5service.php/Interface/services",
         cacheList: null,
         isBusy: null,
         req: null,
@@ -1597,7 +1604,7 @@ window.__require = function e(t, n, o) {
           i.default.playerTouch && null != a.default.Instance.targetFruit && (this.touchNum = 1, a.default.Instance.targetFruit.x = this.node.convertToNodeSpaceAR(e.getLocation()).x)
         }, t.prototype.onTouchEnd = function (e) {
           var t = this;
-          i.default.playerTouch && null != a.default.Instance.targetFruit && 1 == this.touchNum && (this.touchNum = 0, a.default.Instance.targetFruit.getComponent(cc.PhysicsCircleCollider).radius = a.default.Instance.targetFruit.height / 2, a.default.Instance.targetFruit.getComponent(cc.PhysicsCircleCollider).apply(), a.default.Instance.targetFruit.getComponent(cc.RigidBody).active = true,a.default.Instance.targetFruit.getComponent(cc.RigidBody).type = cc.RigidBodyType.Dynamic, a.default.Instance.targetFruit.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, -800), a.default.Instance.targetFruit = null,
+          i.default.playerTouch && null != a.default.Instance.targetFruit && 1 == this.touchNum && (this.touchNum = 0, a.default.Instance.targetFruit.getComponent(cc.PhysicsCircleCollider).radius = a.default.Instance.targetFruit.height / 2, a.default.Instance.targetFruit.getComponent(cc.PhysicsCircleCollider).apply(), a.default.Instance.targetFruit.getComponent(cc.RigidBody).type = cc.RigidBodyType.Dynamic, a.default.Instance.targetFruit.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, -800), a.default.Instance.targetFruit = null,
             // 生成指定水果
             this.scheduleOnce(function () {
               if (setFruits) {
@@ -1884,14 +1891,14 @@ window.__require = function e(t, n, o) {
             e = 4;
             break;
           default:
-            case cc.sys.LANGUAGE_ARABIC: e = 5; break; default: e = 3
+            e = 3
         }
         return e
       },
       gameEnd1: function () {
         var e = this,
           t = this.returnCurrentLanType();
-        1 == t ? (this.gameOverT1.string = "\u6e38 \u620f \u7ed3 \u675f", this.gameOverT2.string = "\u70b9 \u51fb \u67e5 \u770b \u5206 \u6570") : 2 == t ? (this.gameOverT1.string = "\u904a \u6232 \u7d50 \u675f", this.gameOverT2.string = "\u9ede \u64ca \u67e5 \u770b \u5206 \u6578") : 4 == t ? (this.gameOverT1.string = "\uac8c\uc784 \uc885\ub8cc", this.gameOverT2.string = "\ud074\ub9ad \ud558\uc5ec \uc810\uc218 \ubcf4\uae30") : 5 == t ? (this.gameOverT1.string = "نهاية اللعبة", this.gameOverT2.string = "اضغط لعرض النقاط") : (this.gameOverT1.string = "Game Over", this.gameOverT2.string = "Click to view the score"), this.gameOveEndBool = !0, this.gameOverT1.node.zIndex = 999, this.gameOverT2.node.zIndex = 999, this.gameOverToEnd.zIndex = 999, this.gameOverT1.node.opacity = 0, this.gameOverT1.node.y = 100, this.gameOverToEnd.y = 0, this.gameOverT1.node.runAction(cc.sequence(cc.delayTime(.2), cc.spawn(cc.fadeIn(1), cc.moveBy(1, 0, -50)), cc.delayTime(.3))), this.gameOverToEnd.runAction(cc.sequence(cc.fadeTo(1, 100), cc.callFunc(function () {
+        1 == t ? (this.gameOverT1.string = "\u6e38 \u620f \u7ed3 \u675f", this.gameOverT2.string = "\u70b9 \u51fb \u67e5 \u770b \u5206 \u6570") : 2 == t ? (this.gameOverT1.string = "\u904a \u6232 \u7d50 \u675f", this.gameOverT2.string = "\u9ede \u64ca \u67e5 \u770b \u5206 \u6578") : 4 == t ? (this.gameOverT1.string = "\uac8c\uc784 \uc885\ub8cc", this.gameOverT2.string = "\ud074\ub9ad \ud558\uc5ec \uc810\uc218 \ubcf4\uae30") : (this.gameOverT1.string = "Game Over", this.gameOverT2.string = "Click to view the score"), this.gameOveEndBool = !0, this.gameOverT1.node.zIndex = 999, this.gameOverT2.node.zIndex = 999, this.gameOverToEnd.zIndex = 999, this.gameOverT1.node.opacity = 0, this.gameOverT1.node.y = 100, this.gameOverToEnd.y = 0, this.gameOverT1.node.runAction(cc.sequence(cc.delayTime(.2), cc.spawn(cc.fadeIn(1), cc.moveBy(1, 0, -50)), cc.delayTime(.3))), this.gameOverToEnd.runAction(cc.sequence(cc.fadeTo(1, 100), cc.callFunc(function () {
           e.gameOverToEnd.getComponent(cc.Button).enabled = !0
         }))), this.gameOverT2.node.opacity = 0, this.gameOverT2.node.y = this.gameOverT1.node.y - 100, this.gameOverT2.node.runAction(cc.sequence(cc.delayTime(.2), cc.spawn(cc.fadeIn(1), cc.moveBy(1, 0, -50)), cc.delayTime(.3))), this.gameOverT2.node.runAction(cc.sequence(cc.delayTime(2), cc.scaleTo(.3, 1.2).easing(cc.easeSineInOut()), cc.scaleTo(.3, 1).easing(cc.easeSineInOut()))).repeatForever()
       },
@@ -1985,9 +1992,9 @@ window.__require = function e(t, n, o) {
         }, t.prototype.start = function () {
           var e = this;
           this.ShowScorePanel(), s.default.Instance.GetLevel() % 5 == 1 ? (this.passlevelYQ = .12, this.lerpCtrl = !0) : s.default.Instance.GetLevel() % 5 == 2 ? (this.passlevelYQ = .31, this.lerpCtrl = !0) : s.default.Instance.GetLevel() % 5 == 3 ? (this.passlevelYQ = .51, this.lerpCtrl = !0) : s.default.Instance.GetLevel() % 5 == 4 ? (this.passlevelYQ = .71, this.lerpCtrl = !0) : s.default.Instance.GetLevel() % 5 == 0 && (this.passlevelYQ = 1, this.lerpCtrl = !0), cc.tween(this.adsButton).call(function () {
-            e.adsButton.children[0].getComponent(cc.Sprite).spriteFrame = u.default.Instance.adsbutton[0], e.adsButton.active = false  // 隐藏宝箱按钮
+            e.adsButton.children[0].getComponent(cc.Sprite).spriteFrame = u.default.Instance.adsbutton[0]
           }).delay(.5).call(function () {
-            e.adsButton.children[0].getComponent(cc.Sprite).spriteFrame = u.default.Instance.adsbutton[1], e.adsButton.active = false  // 隐藏宝箱按钮
+            e.adsButton.children[0].getComponent(cc.Sprite).spriteFrame = u.default.Instance.adsbutton[1]
           }).delay(.5).union().repeatForever().start()
         }, t.prototype.update = function (e) {
           this.UpdateScoreLabel(e), this.lerpCtrl && this.lerpNumFunc(this.passlevelYQ), this.levelPanel.children[1].getComponent(cc.Label).string = s.default.Instance.GetLevel().toString()
@@ -2135,13 +2142,13 @@ window.__require = function e(t, n, o) {
             i = c.substring(c.lastIndexOf("/game/") + 1, c.length).split("/");
           i.length >= 2 && (a = i[1]), this.gameHttpId = a, cc.log("gameId", a);
           e.substring(e.lastIndexOf("//") + 4, e.lastIndexOf("com") + 3);
-          this.moreGameUrl = "#"  // 已移除外部链接
+          this.moreGameUrl = "http://m.wesane.com/"
         },
         gameOverShowText: function (e, t) {
-          // this.ajaxLoad("http://www.wesane.com/admin.php/Gamescore/saveGamescore", "gameScore=" + e + "&gameId=" + this.gameHttpId + "&gameType=" + t, this.scoreResult)  // 已禁用外部请求
+          this.ajaxLoad("http://www.wesane.com/admin.php/Gamescore/saveGamescore", "gameScore=" + e + "&gameId=" + this.gameHttpId + "&gameType=" + t, this.scoreResult)
         },
         gamePV_load: function () {
-          // this.ajaxLoad("http://www.wesane.com/admin.php/Activityshow/gamelogo", "gameID=" + this.gameHttpId, this.ajaxOnLogoResult)  // 已禁用外部请求
+          this.ajaxLoad("http://www.wesane.com/admin.php/Activityshow/gamelogo", "gameID=" + this.gameHttpId, this.ajaxOnLogoResult)
         },
         ajaxOnLogoResult: function () {
         },
@@ -2990,7 +2997,7 @@ window.__require = function e(t, n, o) {
             e = 4;
             break;
           default:
-            case cc.sys.LANGUAGE_ARABIC: e = 5; break; default: e = 3
+            e = 3
         }
         return e
       }
@@ -3126,7 +3133,7 @@ window.__require = function e(t, n, o) {
             e = 4;
             break;
           default:
-            case cc.sys.LANGUAGE_ARABIC: e = 5; break; default: e = 3
+            e = 3
         }
         return e
       }, e.cbPosToWorldPos = function (e, t, n, o, c, a) {
@@ -3612,7 +3619,7 @@ window.__require = function e(t, n, o) {
             e = 4;
             break;
           default:
-            case cc.sys.LANGUAGE_ARABIC: e = 5; break; default: e = 3
+            e = 3
         }
         return e
       },
