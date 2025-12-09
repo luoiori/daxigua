@@ -1907,6 +1907,12 @@ window.__require = function e(t, n, o) {
         o.GAME_OVER_BOOL = !1, a.gameOverShowText(o.gameScore, 1), this.node.runAction(cc.sequence(cc.delayTime(.5), cc.callFunc(this.gameEnd1.bind(this))))
       },
       returnCurrentLanType: function () {
+        // 检测阿拉伯语
+        var lang = window.navigator.language || "";
+        if (lang == "ar" || lang == "ar-SA") {
+          return 5;
+        }
+
         var e = 1;
         switch (cc.sys.language) {
           case cc.sys.LANGUAGE_CHINESE:
@@ -3153,6 +3159,12 @@ window.__require = function e(t, n, o) {
         var n = this.localConvertWorldPointAR(e);
         return this.worldConvertLocalPointAR(t, n)
       }, e.returnCurrentLanType = function () {
+        // 检测阿拉伯语
+        var lang = window.navigator.language || "";
+        if (lang == "ar" || lang == "ar-SA") {
+          return 5;
+        }
+
         var e = 1;
         switch (cc.sys.language) {
           case cc.sys.LANGUAGE_CHINESE:
@@ -3639,6 +3651,12 @@ window.__require = function e(t, n, o) {
         o ? o < c.gameScore && (this.setHisSocre(c.gameScore), o = c.gameScore) : (this.setHisSocre(c.gameScore), o = n), this.maxScoreText.string = e + o
       },
       returnCurrentLanType: function () {
+        // 检测阿拉伯语
+        var lang = window.navigator.language || "";
+        if (lang == "ar" || lang == "ar-SA") {
+          return 5;
+        }
+
         var e = 1;
         switch (cc.sys.language) {
           case cc.sys.LANGUAGE_CHINESE:
