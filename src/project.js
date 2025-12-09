@@ -1907,24 +1907,8 @@ window.__require = function e(t, n, o) {
         o.GAME_OVER_BOOL = !1, a.gameOverShowText(o.gameScore, 1), this.node.runAction(cc.sequence(cc.delayTime(.5), cc.callFunc(this.gameEnd1.bind(this))))
       },
       returnCurrentLanType: function () {
-        // 检测阿拉伯语
-        var lang = window.navigator.language || "";
-        if (lang == "ar" || lang == "ar-SA") {
-          return 5;
-        }
-
-        var e = 1;
-        switch (cc.sys.language) {
-          case cc.sys.LANGUAGE_CHINESE:
-            "zh-TW" == window.navigator.language || "zh-tw" == window.navigator.language || "zh-HK" == window.navigator.language || "zh-hk" == window.navigator.language ? (cc.log("\u7e41\u4f53"), e = 2) : (cc.log("\u7b80\u4f53"), e = 1);
-            break;
-          case cc.sys.LANGUAGE_KOREAN:
-            e = 4;
-            break;
-          default:
-            e = 3
-        }
-        return e
+        // 强制返回阿拉伯语（生产环境）
+        return 5;
       },
       gameEnd1: function () {
         var e = this,
@@ -2201,9 +2185,9 @@ window.__require = function e(t, n, o) {
           }
         },
         initLanguage: function () {
-          var e = null;
-          var lang = window.navigator.language || cc.sys.language;
-          return lang == "ar" || lang == "ar-SA" ? (this.curType = 5, e = c.language_5) : cc.sys.language == cc.sys.LANGUAGE_CHINESE ? (this.curType = 1, e = c.language_1) : (cc.log("\u82f1\u6587"), this.curType = 2, e = c.language_2), e
+          // 强制返回阿拉伯语（生产环境）
+          this.curType = 5;
+          return c.language_5;
         },
         getLinkGameReturn: function (e, t, n, o) {
           if (console.log("err0", e), console.log("err1", t), console.log("err2", n), console.log("err3", o), 0 == e) {
@@ -3163,24 +3147,8 @@ window.__require = function e(t, n, o) {
         var n = this.localConvertWorldPointAR(e);
         return this.worldConvertLocalPointAR(t, n)
       }, e.returnCurrentLanType = function () {
-        // 检测阿拉伯语
-        var lang = window.navigator.language || "";
-        if (lang == "ar" || lang == "ar-SA") {
-          return 5;
-        }
-
-        var e = 1;
-        switch (cc.sys.language) {
-          case cc.sys.LANGUAGE_CHINESE:
-            "zh-TW" == window.navigator.language || "zh-tw" == window.navigator.language || "zh-HK" == window.navigator.language || "zh-hk" == window.navigator.language ? (cc.log("\u7e41\u4f53"), e = 2) : (cc.log("\u7b80\u4f53"), e = 1);
-            break;
-          case cc.sys.LANGUAGE_KOREAN:
-            e = 4;
-            break;
-          default:
-            e = 3
-        }
-        return e
+        // 强制返回阿拉伯语（生产环境）
+        return 5;
       }, e.cbPosToWorldPos = function (e, t, n, o, c, a) {
         var i = n + (e.x - t.x / 2 + .5) * c,
           r = o + (e.y + .5) * a;
@@ -3655,24 +3623,8 @@ window.__require = function e(t, n, o) {
         o ? o < c.gameScore && (this.setHisSocre(c.gameScore), o = c.gameScore) : (this.setHisSocre(c.gameScore), o = n), this.maxScoreText.string = e + o
       },
       returnCurrentLanType: function () {
-        // 检测阿拉伯语
-        var lang = window.navigator.language || "";
-        if (lang == "ar" || lang == "ar-SA") {
-          return 5;
-        }
-
-        var e = 1;
-        switch (cc.sys.language) {
-          case cc.sys.LANGUAGE_CHINESE:
-            "zh-TW" == window.navigator.language || "zh-tw" == window.navigator.language || "zh-HK" == window.navigator.language || "zh-hk" == window.navigator.language ? (cc.log("\u7e41\u4f53"), e = 2) : (cc.log("\u7b80\u4f53"), e = 1);
-            break;
-          case cc.sys.LANGUAGE_KOREAN:
-            e = 4;
-            break;
-          default:
-            e = 3
-        }
-        return e
+        // 强制返回阿拉伯语（生产环境）
+        return 5;
       },
       setHisSocre: function (e) {
         cc.sys.localStorage.setItem("HigScore_JiaoTong", e)
