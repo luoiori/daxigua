@@ -1790,8 +1790,8 @@ window.__require = function e(t, n, o) {
         gameT1: "\u5173\u6ce8\u6211\u4eec",
         gameT2: "\u7eb8\u724c\u63a5\u9f99",
         gameT3: "\u9526\u4e0a\u6dfb\u82b1",
-        gameUrl1: "http://g.regogame.com/game/9/",
-        gameUrl2: "http://g.regogame.com/game/3/",
+        gameUrl1: "",
+        gameUrl2: "",
         gameT11: "\u5173\u6ce8\u5fae\u4fe1",
         gameT12: "\u5173\u6ce8Kakao",
         gameT13: "\u5173\u6ce8Line",
@@ -1811,13 +1811,34 @@ window.__require = function e(t, n, o) {
         gameT1: "Follow Us",
         gameT2: "Thousand Flower",
         gameT3: "Eliminate Star",
-        gameUrl1: "http://g.fromgame.com/game/53",
-        gameUrl2: "http://g.fromgame.com/game/13",
+        gameUrl1: "",
+        gameUrl2: "",
         gameT11: "Focus WeChat",
         gameT12: "Focus Kakao",
         gameT13: "Focus Line",
         gameEndL: "Game OVer",
         gameEndL1: "View the score later"
+      },
+      language_5: {
+        game_name: "لعبة دمج البطيخ",
+        game_name1: "دمج البطيخ",
+        game_info: "اجمع الفواكه لتحصل على بطيخة كبيرة!",
+        txtStart: "ابدأ",
+        txtMore: "المزيد من الألعاب",
+        txtAgain: "العب مرة أخرى",
+        txtShare1: "في اللعبة ",
+        txtShare2: " دعونا نلعب معاً!",
+        bgRgb: "#3698C5",
+        gameT1: "تابعنا",
+        gameT2: "",
+        gameT3: "",
+        gameUrl1: "",
+        gameUrl2: "",
+        gameT11: "",
+        gameT12: "",
+        gameT13: "",
+        gameEndL: "نهاية اللعبة",
+        gameEndL1: "اضغط لعرض النقاط"
       }
     }, cc._RF.pop()
   }, {}],
@@ -2171,7 +2192,8 @@ window.__require = function e(t, n, o) {
         },
         initLanguage: function () {
           var e = null;
-          return cc.sys.language == cc.sys.LANGUAGE_CHINESE ? (this.curType = 1, e = c.language_1) : (cc.log("\u82f1\u6587"), this.curType = 2, e = c.language_2), e
+          var lang = window.navigator.language || cc.sys.language;
+          return lang == "ar" || lang == "ar-SA" ? (this.curType = 5, e = c.language_5) : cc.sys.language == cc.sys.LANGUAGE_CHINESE ? (this.curType = 1, e = c.language_1) : (cc.log("\u82f1\u6587"), this.curType = 2, e = c.language_2), e
         },
         getLinkGameReturn: function (e, t, n, o) {
           if (console.log("err0", e), console.log("err1", t), console.log("err2", n), console.log("err3", o), 0 == e) {
