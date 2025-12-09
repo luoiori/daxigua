@@ -1874,12 +1874,6 @@ window.__require = function e(t, n, o) {
       },
       onLoad: function () {
         cc.director.getCollisionManager().enabled = !0, cc.director.getPhysicsManager().enabled = !0, this.gameOveEndBool = !1, this.gameOverNum = 0, this.gameWidth = cc.winSize.width, this.gameHeight = cc.winSize.height, o.playNum, o.playNum++, c.loadingLayer("panel/LinkIconSpr"), o.mainGameJs = this, o.publicGameBool || this.play()
-
-        // 【测试模式】直接显示游戏结束界面，快速验证翻译
-        var self = this;
-        setTimeout(function() {
-          self.gameEnd1();
-        }, 500);
       },
       play: function () {
         console.log(1);
