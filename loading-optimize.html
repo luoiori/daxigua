@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>دمج البطيخ الكبير - تحميل</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+        }
+        .loader-container {
+            text-align: center;
+            color: white;
+        }
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #667eea;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .progress-bar {
+            width: 300px;
+            height: 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: white;
+            width: 0%;
+            transition: width 0.3s;
+            border-radius: 10px;
+        }
+        .loading-text {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .loading-tip {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="loader"></div>
+        <div class="loading-text">جاري التحميل...</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+        <div class="loading-tip">يرجى الانتظار، تحميل الموارد...</div>
+    </div>
+
+    <script>
+        // 模拟加载进度
+        let progress = 0;
+        const progressBar = document.getElementById('progress');
+        
+        const interval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                // 跳转到实际游戏
+                window.location.href = 'index.html';
+            }
+            progressBar.style.width = progress + '%';
+        }, 200);
+
+        // 预加载关键资源
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = 'cocos2d-js-min.js';
+        link.as = 'script';
+        document.head.appendChild(link);
+    </script>
+</body>
+</html>
